@@ -103,7 +103,7 @@ Some of the significant problems that emerge when attempting to synthesise these
 
 We propose that the adoption of a \acf{DGGS} addresses these problems while affording additional benefits; but we do not attempt to argue that it is a panacea for all data integration issues. This paper will describe our approach using the hexagonal, hierarchical and geodesic Uber H3 \ac{DGGS} \citep{brodsky2018h3} as a means to integrating heterogeneous geospatial information. We will explain that the adoption of any \ac{DGGS} affords the opportunity for horizontal scaling for geospatial classification by using column-oriented data formats (e.g. Apache Parquet) which natively support the \ac{DGGS} data model \textit{without} an explicit understanding of the data structure as geospatial information. This can be done in such a way that the output can be presented in either the vector or raster data models and therefore does not require end users to adopt a \ac{DGGS} in order to use the output land-use data. As a stable reference grid, a \ac{DGGS} is an appropriate data structure for enhancing analytical reproducibility in \ac{GIS} \citep{etherington2022}.
 
-In this paper we also perform a benchmarking exercise to compare the performance of overlay and geographic object classification when using a \ac{DGGS} against the alternate performance of equivalent vector- and raster-oriented workflows.
+In this paper we also perform two benchmarking exercises to compare the performance of overlay and geographic object classification when using a \ac{DGGS} against the performance of equivalent vector- and raster-oriented workflows.
 
 \section{Advantages of a \ac{DGGS} for land-use mapping} % 2000 words
 
