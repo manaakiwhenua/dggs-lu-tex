@@ -18,6 +18,7 @@
 \usepackage[natbibapa,nodoi]{apacite}% Citation support using apacite.sty. Commands using natbib.sty MUST be deactivated first!
 \setlength\bibhang{12pt}% To set the indentation in the list of references using apacite.sty. Commands using natbib.sty MUST be deactivated first!
 \renewcommand\bibliographytypesize{\fontsize{10}{12}\selectfont}% To set the list of references in 10 point font using apacite.sty. Commands using natbib.sty MUST be deactivated first!
+\usepackage{siunitx}
 
 \theoremstyle{plain}% Theorem-like structures provided by amsthm.sty
 \newtheorem{theorem}{Theorem}[section]
@@ -169,7 +170,7 @@ After production, the general efficiency of the classification process makes the
 % TODO - should this be rephrased to make it not sound self-referential? How does this affect blind peer review?
 \subsection{Demonstration land-use map}
 
-We applied these ideas when developing a land-use map for Northland, New Zealand \citep[see][]{law2023}. We implemented version 8 of the \ac{ALUM} classification system, which has a Creative Commons license. The \ac{ALUM} classification goes beyond the specification of a hierarchical schemata of land-use classes, and includes guidelines for the mapping of land use from aerial imagery and ancillary information, and a vocabulary of commodities and management practices used to add detail beyond the available classes. The use of a \ac{DGGS} is not part of the \ac{ALUM} specification.
+We applied these ideas when developing a land-use map for Northland, a region of New Zealand of \qty{12500}{\km\squared} and 200\,000 people \citep[see][]{law2023}. We implemented version 8 of the \ac{ALUM} classification system, which has a Creative Commons license. The \ac{ALUM} classification goes beyond the specification of a hierarchical schemata of land-use classes, and includes guidelines for the mapping of land use from aerial imagery and ancillary information, and a vocabulary of commodities and management practices used to add detail beyond the available classes. The use of a \ac{DGGS} is not part of the \ac{ALUM} specification.
 
 The production of this layer involved the integration of 48 different geospatial layers from many sources. Both raster and vector data types were included. The \ac{ALUM} classification system has over 200 classes at the tertiary level of the hierarchy; most but not all of these were realised for Northland. (Many of the unrealised classes were specifically Australian and were not applicable in New Zealand.)
 
