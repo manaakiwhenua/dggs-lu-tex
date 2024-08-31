@@ -117,7 +117,7 @@ The \ac{DGGS} data model is fundamentally different from the traditional vector 
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.65\linewidth]{images/DGGS_lu-02.eps}
-    \caption{The hierarchical \ac{DGGS} data model affords a convenient platform for scaling computation compared to the vector and raster data models. Spatial partitioning is inherent in the structure of a \ac{DGGS}. Zones at a particular quantised resolution (cells shown in a black outline) can be partitioned by a common ancestor (pink outlines) at an appropriate offset (here, one level). Combinational logic (classification computation) can then be applied in parallel across all available compute cores to evenly-partitioned data.}
+    \caption{The \ac{DGGS} data model is suitable for horizontal scaling. Spatial partitioning is inherent in the structure of a \ac{DGGS}. Zones at a particular resolution (black outlines) can be partitioned by a common ancestor (pink outlines) at an appropriate offset (here, just one level). Combinational logic (map classification) can then be applied in parallel across all available compute cores to evenly-partitioned data.}
     \label{fig:Scalable}
 \end{figure}
 
@@ -134,7 +134,7 @@ Partition keys are usually used to limit the results of particular queries by ex
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.65\linewidth]{images/DGGS_lu-01.png}
-    \caption{Data quantisation with a \ac{DGGS}. Both vector and raster types may be transformed and quantised into a \ac{DGGS}. Quantised data from various inputs can be efficiently joined using the \ac{DGGS} zone ID. All attribute information is associable with the zone ID.}
+    \caption{Data quantisation with a \ac{DGGS}. Both vector and raster data may be transformed. Quantised data from disparate inputs can be related using the \ac{DGGS} zone ID in an implicit spatial join.}
     \label{fig:Interoperable}
 \end{figure}
 
@@ -147,7 +147,7 @@ When indexed to a \ac{DGGS}, geospatial data originally available as raster or v
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.65\linewidth]{images/DGGS_lu-03.png}
-    \caption{Land classification tasks can be represented as Venn (or Euler) diagrams, where particular spatial relationships between geospatial features are meaningful and can be labelled. Most commonly, intersection (or non-intersection) is meaningful, but various forms of adjacency may also be relevant. The \ac{DGGS} data model makes the computation of intersection relationships computationally efficient by facilitating joins on zone IDs, and providing a pre-partitioned data structure for parallelisation. This efficiency is important as the mapping rules are often (re-)developed iteratively and interactively; inefficient computation would make this reproductive process difficult.}
+    \caption{Land classification tasks can be represented as Venn (or Euler) diagrams, in which particular spatial relationships between geospatial features are meaningful and can be labelled. Most commonly, intersection (or non-intersection) is meaningful, but adjacency may also be relevant. Attribute joins using \ac{DGGS} zone IDs are equivalent to spatial intersection. This is efficient to compute, which allows the mapping rules to be (re-)developed iteratively and even interactively.}
     \label{fig:Reproducible}
 \end{figure}
 
@@ -185,7 +185,7 @@ Ultimately two data artefacts were created: property parcels encoded with the do
 \begin{figure}[t]
     \centering
     \includegraphics[width=1\linewidth]{images/NRC_ALUM.png}
-    \caption{Land-use map of Northland, New Zealand. The map classification was performed to the tertiary level of the \ac{ALUM} classification hierarchy where data supported it, but only the secondary level is shown here for ease of comprehension. Reproduced from \citet{law2023}.}
+    \caption{Land-use map of Northland, New Zealand using the H3 \ac{DGGS}. The map classification was performed to the tertiary level of the \ac{ALUM} classification hierarchy where data supported it, but only the secondary level is shown here for ease of comprehension. Reproduced from \citet{law2023}.}
     \label{fig:NRC-ALUM}
 \end{figure}
 
@@ -204,7 +204,7 @@ To compare this to a \ac{DGGS} workflow, we first needed to perform the addition
     % \resizebox{25pc}{!}{\includegraphics{images/vector-results.eps}}
     % \includegraphics[width=0.65\linewidth]{images/vector-results.eps}
     \includegraphics[width=0.65\linewidth]{images/vector-results.png}
-    \caption{Vector benchmarking results, demonstrating efficiencies for a \ac{DGGS} land-use map of several orders of magnitude over a na\"{i}ve vector overlay approach. Note that it was not possible to perform the vector method over 500 input layers on our benchmarking machine (memory exhaustion); we have not extrapolated those lines to complete the series, but it would be reasonable to do so.}
+    \caption{Vector benchmarking results. A \ac{DGGS} method for land-use mapping was several orders of magnitude more efficient than a na\"{i}ve vector overlay and map classification. Note that it was not possible to perform the vector method over 500 input layers on our benchmarking machine due to memory exhaustion.}
     \label{fig:BenchmarkVect}
 \end{figure}
 
@@ -227,7 +227,7 @@ The results (Figure~\ref{fig:BenchmarkRast}) demonstrate equivalence between the
     % \resizebox{25pc}{!}{\includegraphics{images/raster-results.eps}}
     % \includegraphics[width=0.65\linewidth]{images/raster-results.eps}
     \includegraphics[width=0.65\linewidth]{images/raster-results.png}
-    \caption{Raster input benchmarking results, demonstrating roughly equivalent performance between raster and \ac{DGGS} methods of combination and deterministic map classification.}
+    \caption{Raster input benchmarking results. These demonstrate roughly equivalent performance between raster and \ac{DGGS} methods of combination and deterministic map classification.}
     \label{fig:BenchmarkRast}
 \end{figure}
 
@@ -290,7 +290,7 @@ The code written to generate the benchmark cases, and to measure the performance
 
 
 \bibliographystyle{apacite}
-\bibliography{references} % TODO replace
+\bibliography{references}
 
 %TC:endignore
 \end{document}
