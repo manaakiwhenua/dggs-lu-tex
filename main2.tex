@@ -38,6 +38,7 @@
 \acrodef{CPU}[CPU]{central processing unit}
 \acrodef{DE-9IM}[DE-9IM]{Dimensionally Extended 9-Intersection Model}
 \acrodef{DGGS}[DGGS]{discrete global grid system}
+\acrodef{EOS}[EOS]{Earth observing systems}
 \acrodef{GIS}[GIS]{geographic information system}
 \acrodef{GISc}[GIScience]{geographic information science}
 \acrodef{NLM}[NLM]{neutral landscape model}
@@ -106,7 +107,7 @@ Some of the significant problems that emerge when attempting to synthesise these
 
 We propose that the adoption of a \acf{DGGS} addresses these problems while affording additional benefits; but we do not attempt to argue that it is a panacea for all data integration issues. This paper will describe our approach using the hexagonal, hierarchical and geodesic Uber H3 \ac{DGGS} \citep{brodsky2018h3} as a means to integrating heterogeneous geospatial information. We will explain that the adoption of any \ac{DGGS} affords the opportunity for horizontal scaling for geospatial classification by using column-oriented data formats (e.g. Apache Parquet) which natively support the \ac{DGGS} data model \textit{without} an explicit understanding of the data structure as geospatial information. This can be done in such a way that the output can be presented in either the vector or raster data models and therefore does not require end users to adopt a \ac{DGGS} in order to use the output land-use data. As a stable reference grid, a \ac{DGGS} is an appropriate data structure for enhancing analytical reproducibility in \ac{GIS} \citep{purss2019datacubes,etherington2022}. In particular, we will establish that there there is a significant gain in computational efficiency by replacing some forms of spatial overlays with simple comparisons of zone IDs.
 
-In this paper we also perform two benchmarking exercises to compare the performance of overlay and geographic object classification when using a \ac{DGGS} against the performance of equivalent vector- and raster-oriented workflows.
+Evaluating the performance of \ac{DGGS} for common \ac{GIS} tasks is one of the four \ac{GISc} research challenges for \acp{DGGS} recently identified by \citet{hojati2022giscience}. Few \ac{DGGS} benchmarking examples exist in the literature; most attention at this stage has been paid to their use in \ac{EOS} or directly comparing \acp{DGGS} more fundamentally \citep{thompson2022ease}. Therefore the primary outcome of this paper is the result of two benchmarking exercises designed to compare the performance of overlay and geographic object classification when using a \ac{DGGS} against the performance of equivalent vector- and raster-oriented workflows.
 
 \section{Advantages of a \ac{DGGS} for land-use mapping} % 2000 words
 
@@ -193,7 +194,7 @@ Ultimately two data artefacts were created: property parcels encoded with the do
 
 \subsection{Performance benchmarking}
 
-We designed a benchmarking experiment to compare a land-use mapping workflow using either vector data, or data indexed to a \ac{DGGS}. We then designed a similar experiment using raster data as input. Evaluating the performance of \ac{DGGS} for common \ac{GIS} tasks is one of the four \ac{GISc} research challenges for \acp{DGGS} recently identified by \citet{hojati2022giscience}. Few \ac{DGGS} benchmarking examples exist in the literature. Ensuring these comparisons are fair is somewhat fraught, due to the fundamental difference in object representation between the DGGS, vector, and raster data models; and because any operations on the traditional data models will benefit from many existing optimisations \citep{hojati2022giscience}. In the case of land-use mapping, we can design data-model-specific workflows to produce comparable outputs from identical (random) inputs, and measure the computational time.
+We designed a benchmarking experiment to compare a land-use mapping workflow using either vector data, or data indexed to a \ac{DGGS}. We then designed a similar experiment using raster data as input. Ensuring these comparisons are fair is somewhat fraught, due to the fundamental difference in object representation between the DGGS, vector, and raster data models; and because any operations on the traditional data models will benefit from many existing optimisations \citep{hojati2022giscience}. In the case of land-use mapping, we can design data-model-specific workflows to produce comparable outputs from identical (random) inputs, and measure the computational time.
 
 \subsubsection{Vector}
 
